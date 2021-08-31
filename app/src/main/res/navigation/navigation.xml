@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/menuFragment">
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="my.edu.tarc.hotayi.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_productFragment"
+            app:destination="@id/productFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_retrieveProductFragment"
+            app:destination="@id/retrieveProductFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_warehouseMapFragment"
+            app:destination="@id/warehouseMapFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_reportFragment"
+            app:destination="@id/reportFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="my.edu.tarc.hotayi.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" >
+        <action
+            android:id="@+id/action_productFragment_to_receiveProductFragment"
+            app:destination="@id/receiveProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiveProductFragment"
+        android:name="my.edu.tarc.hotayi.ReceiveProductFragment"
+        android:label="fragment_receive_product"
+        tools:layout="@layout/fragment_receive_product" />
+    <fragment
+        android:id="@+id/retrieveProductFragment"
+        android:name="my.edu.tarc.hotayi.RetrieveProductFragment"
+        android:label="fragment_retrieve_product"
+        tools:layout="@layout/fragment_retrieve_product" />
+    <fragment
+        android:id="@+id/warehouseMapFragment"
+        android:name="my.edu.tarc.hotayi.WarehouseMapFragment"
+        android:label="fragment_warehouse_map"
+        tools:layout="@layout/fragment_warehouse_map" />
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="my.edu.tarc.hotayi.ReportFragment"
+        android:label="fragment_report"
+        tools:layout="@layout/fragment_report" />
+</navigation>

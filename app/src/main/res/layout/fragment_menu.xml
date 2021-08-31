@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundcolor"
+        tools:context=".MenuFragment">
+
+        <Button
+            android:id="@+id/product"
+            android:layout_width="180dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/home1"
+
+            android:text="@string/product"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/retrieveProduct"
+            android:layout_width="180dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/home2"
+
+            android:text="@string/retrieve_from_rack"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/product" />
+
+        <Button
+            android:id="@+id/warehouseMap"
+            android:layout_width="180dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/home3"
+
+            android:text="@string/warehouse_map"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/retrieveProduct" />
+
+        <Button
+            android:id="@+id/report"
+            android:layout_width="180dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/home4"
+
+            android:text="@string/report"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/warehouseMap" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
