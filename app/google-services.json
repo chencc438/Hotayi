@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "130092001951",
+    "firebase_url": "https://coolhotayi-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "coolhotayi",
+    "storage_bucket": "coolhotayi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130092001951:android:4f045058ad57fec8b250aa",
+        "android_client_info": {
+          "package_name": "my.edu.tarc.hotayi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130092001951-c5cmlhv6arca1cgfvgo2gpmm65133eih.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzFM0N_T-bCrL6jKVD7tOQtYdA13lQGwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130092001951-c5cmlhv6arca1cgfvgo2gpmm65133eih.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
