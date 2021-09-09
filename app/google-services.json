@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "130092001951",
-    "firebase_url": "https://coolhotayi-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "coolhotayi",
-    "storage_bucket": "coolhotayi.appspot.com"
+    "project_number": "267572187606",
+    "firebase_url": "https://hotayicool-1adab-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "hotayicool-1adab",
+    "storage_bucket": "hotayicool-1adab.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:130092001951:android:4f045058ad57fec8b250aa",
+        "mobilesdk_app_id": "1:267572187606:android:9eded518668aa936e65477",
         "android_client_info": {
           "package_name": "my.edu.tarc.hotayi"
         }
       },
       "oauth_client": [
         {
-          "client_id": "130092001951-c5cmlhv6arca1cgfvgo2gpmm65133eih.apps.googleusercontent.com",
+          "client_id": "267572187606-mkmds0tvkubr25pvgopc7pjb4kv6ki07.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCzFM0N_T-bCrL6jKVD7tOQtYdA13lQGwo"
+          "current_key": "AIzaSyA6uHPbmpgwLp0JfH8Kc0gwXNXrxlwTIFE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "130092001951-c5cmlhv6arca1cgfvgo2gpmm65133eih.apps.googleusercontent.com",
+              "client_id": "267572187606-mkmds0tvkubr25pvgopc7pjb4kv6ki07.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
