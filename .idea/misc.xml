@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/Desktop/Hotayi/app/src/main/res/layout-v21/warehouse_popup_window.xml" value="0.22" />
         <entry key="..\:/Users/User/Desktop/Hotayi/app/src/main/res/layout/fragment_retrieve_product.xml" value="0.25" />
-        <entry key="..\:/Users/User/Desktop/Hotayi/app/src/main/res/layout/fragment_warehouse_map.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/Hotayi/app/src/main/res/layout/fragment_warehouse_map.xml" value="0.33" />
+        <entry key="..\:/Users/User/Desktop/Hotayi/app/src/main/res/layout/warehouse_popup_window.xml" value="0.5" />
       </map>
     </option>
   </component>

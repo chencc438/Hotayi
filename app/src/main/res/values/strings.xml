@@ -10,4 +10,11 @@
     <string name="receive_product">Receive Product</string>
     <string name="add_product">Add Product</string>
     <string name="product_details">Product Details</string>
+    <string name="add">Add</string>
+    <string name="_1">1</string>
+    <string name="rack">Rack</string>
+    <string name="row">Row</string>
+    <string name="column">Column</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
 </resources>
