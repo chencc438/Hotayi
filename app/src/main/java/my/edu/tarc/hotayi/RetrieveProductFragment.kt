@@ -24,9 +24,10 @@ class RetrieveProductFragment : Fragment() {
 
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_retrieve_product, container, false)
-        binding.btnRetrieveBack.setOnClickListener {
+        binding.btnBack.setOnClickListener {
             activity?.onBackPressed()
         }
+
         val scanIntegrator = IntentIntegrator.forSupportFragment(this)
         scanIntegrator.setPrompt("Scan")
         scanIntegrator.setBeepEnabled(true)
@@ -37,53 +38,93 @@ class RetrieveProductFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SimpleDateFormat")
+    private fun sendToProduction(materialCount: Int) {
+        val MaterialRef = FirebaseDatabase.getInstance().getReference("Materials")
+        val serialNo = binding.textViewMaterial.text.toString()
+        val sdf = SimpleDateFormat("dd/MM/yyyy")
+        val date: String = sdf.format(System.currentTimeMillis())
+        var quantity = binding.editTextQty.text.toString().toInt()
+        var i = 0
+        var listMaterial: ArrayList<String> = ArrayList()
+
+        if(quantity in 1..materialCount) {
+            MaterialRef.child(serialNo).child("Parts").get().addOnSuccessListener { snapshot ->
+                if (snapshot.exists()) {
+                    snapshot.children.forEach { datasnapshot ->
+
+                        if (datasnapshot.child("status").value.toString() == "2") {
+                            listMaterial.add(datasnapshot.key.toString())
+                        }
+                    }
+
+                } else {
+                    Toast.makeText(activity, "Error!", Toast.LENGTH_LONG).show()
+                }
+                while (quantity != 0) {
+                    MaterialRef.child(serialNo).child("Parts").child(listMaterial[i])
+                        .child("status")
+                        .setValue(3)
+                    MaterialRef.child(serialNo).child("Parts").child(listMaterial[i])
+                        .child("rackOutDate")
+                        .setValue(date)
+                    quantity -= 1
+                    i++
+                }
+                Toast.makeText(activity, "Successfully Sent to Production", Toast.LENGTH_LONG)
+                    .show()
+            }
+            binding.btnSend.isEnabled = false
+        }else{
+            Toast.makeText(activity,"There is only $materialCount Part on the Rack!", Toast.LENGTH_LONG).show()
+        }
+
+    }
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         var result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
 
         if (result != null) {
-            afterScan(result.contents.toString())
+            if(result.contents != null) {
+                afterScan(result.contents.toString())
+            }else{
+                binding.editTextQty.isEnabled = false
+                binding.btnSend.isEnabled = false
+            }
         } else {
             Toast.makeText(requireActivity(), "Failed to get result", Toast.LENGTH_LONG).show()
         }
     }
 
-    @SuppressLint("SimpleDateFormat")
+    @SuppressLint("SetTextI18n")
     private fun afterScan(serialNo: String) {
-        val materialsracksRef = FirebaseDatabase.getInstance().getReference("MaterialsRacks")
-        val materialsRef = FirebaseDatabase.getInstance().getReference("Materials")
-        materialsRef.child(serialNo).get().addOnSuccessListener { snapshot ->
-            if (snapshot.exists()) {
-                if (snapshot.child("Status").value.toString() == 2.toString()) {
-                    materialsracksRef.child(serialNo).get().addOnSuccessListener { dataSnapshot ->
-                        if (dataSnapshot.exists()) {
-                            val sdf = SimpleDateFormat("dd/MM/yyyy")
-                            var date: String = sdf.format(System.currentTimeMillis())
-                            materialsRef.child(serialNo).child("Status").setValue(3)
-                                .addOnSuccessListener {
-                                    materialsracksRef.child(serialNo).child("RackOutDate")
-                                        .setValue(date).addOnSuccessListener {
-                                            binding.textViewResult.text = serialNo
-                                            binding.textViewMsg.text =
-                                                "Has been issued to production!"
 
-                                        }
-                                }
-                        } else{
-                            binding.textViewResult.text = serialNo
-                            //material status is at rack but cannot found on rack
-                            binding.textViewMsg.text = "Error!"
+        val MaterialRef = FirebaseDatabase.getInstance().getReference("Materials")
+        var materialCount = 0
+
+
+        MaterialRef.child(serialNo).get().addOnSuccessListener { datasnapshot ->
+            if (datasnapshot.exists()) {
+                MaterialRef.child(serialNo).child("Parts").get()
+                    .addOnSuccessListener { datasnap ->
+                        datasnap.children.forEach {
+                            if (it.child("status").value.toString() == "2") {
+                                materialCount += 1
+                            }
                         }
+                        binding.textViewMaterial.text = serialNo
+                        binding.textViewResult.text = "Found!"
+                        binding.textViewMsg.text = "$materialCount Parts on Rack found."
+                        binding.btnSend.setOnClickListener { sendToProduction(materialCount) }
                     }
-                }else{
-                    binding.textViewResult.text = serialNo
-                    //material status is not on rack
-                    binding.textViewMsg.text = "Is not on the Rack!"
-                }
-            }else{
-                binding.textViewResult.text = serialNo
-                binding.textViewMsg.text = "Material Not found!"
+            } else {
+                binding.textViewMaterial.text = serialNo
+                binding.textViewResult.text = "Not found!"
+                binding.editTextQty.isEnabled = false
+                binding.btnSend.isEnabled = false
             }
         }
     }

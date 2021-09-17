@@ -17,4 +17,11 @@
     <string name="column">Column</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
+    <string name="addrack">Add Rack</string>
+    <string name="deleterack">Delete Rack</string>
+    <string name="rackid">Rack ID</string> <string name="quantity_to_production">Quantity to Production</string>
+    <string name="back">Back</string>
+    <string name="send">Send</string>
+    <string name="_0">0</string>
+
 </resources>
